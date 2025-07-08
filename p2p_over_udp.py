@@ -4,7 +4,6 @@ from os import system
 import time
 
 is_connected = False # is client connected to peer?
-broadcast_addr = ("192.168.1.255", 10001) # will be used in discovery process
 client_username = input("Enter your username: ").upper()
 
 # broadcasting socket
@@ -12,6 +11,7 @@ broadcast_port = 10001
 brd_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 brd_sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1) # what is that?
 brd_sock.bind(('', broadcast_port))
+broadcast_addr = ("255.255.255.255", broadcast_port) # 1st arg is the broadcast ip addr
 
 # client socket configuration
 client_sock_addr = ('', 10000)
